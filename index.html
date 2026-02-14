@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Love Nada ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+        }
+
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            color: rgba(255, 0, 0, 0.5);
+            animation: float 6s infinite ease-in;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            max-width: 800px;
+            padding: 40px 20px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .valentine-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            padding: 50px 30px;
+            box-shadow: 0 20px 60px rgba(255, 0, 0, 0.3);
+            position: relative;
+            z-index: 2;
+            border: 3px solid #fff;
+            backdrop-filter: blur(10px);
+            animation: cardAppear 1s ease-out;
+        }
+
+        @keyframes cardAppear {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            color: #ff3366;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            animation: titlePop 1.5s ease;
+        }
+
+        .name-highlight {
+            background: linear-gradient(45deg, #ff3366, #ff66b2);
+            color: white;
+            padding: 0 15px;
+            border-radius: 50px;
+            display: inline-block;
+            box-shadow: 0 5px 15px rgba(255, 51, 102, 0.3);
+        }
+
+        @keyframes titlePop {
+            0% { transform: scale(0.5); }
+            80% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .heart-big {
+            font-size: 6rem;
+            margin: 20px 0;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            14% { transform: scale(1.3); }
+            28% { transform: scale(1); }
+            42% { transform: scale(1.3); }
+            70% { transform: scale(1); }
+        }
+
+        .message {
+            font-size: 1.8rem;
+            color: #555;
+            margin: 30px 0;
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        .special-message {
+            background: #ffe6e9;
+            padding: 25px;
+            border-radius: 60px 60px 60px 0;
+            margin: 30px 0;
+            border: 2px dashed #ff99aa;
+            transform: rotate(-1deg);
+        }
+
+        .special-message p {
+            font-size: 1.3rem;
+            color: #d44;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+
+        .nada-acrostic {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin: 40px 0;
+        }
+
+        .acrostic-letter {
+            background: #ff99aa;
+            padding: 20px;
+            border-radius: 20px;
+            color: white;
+            font-size: 2.5rem;
+            font-weight: bold;
+            box-shadow: 0 10px 0 #b2475c;
+            transform: rotate(var(--rotate));
+            transition: transform 0.3s;
+        }
+
+        .acrostic-letter:hover {
+            transform: translateY(-5px) rotate(0deg);
+            box-shadow: 0 15px 0 #b2475c;
+        }
+
+        .acrostic-letter:nth-child(1) { --rotate: -2deg; background: #ff6b6b; }
+        .acrostic-letter:nth-child(2) { --rotate: 3deg; background: #ff8e8e; }
+        .acrostic-letter:nth-child(3) { --rotate: -1deg; background: #ffb3b3; }
+        .acrostic-letter:nth-child(4) { --rotate: 2deg; background: #ffc1c1; }
+
+        .acrostic-meaning {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: #633;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 15px;
+            border-radius: 30px;
+        }
+
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 40px 0;
+        }
+
+        .photo-frame {
+            background: #ffd9df;
+            padding: 20px;
+            border-radius: 20px;
+            transform: rotate(var(--rotate));
+            transition: transform 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .photo-frame:hover {
+            transform: scale(1.05) rotate(0deg);
+        }
+
+        .photo-frame:nth-child(1) { --rotate: -3deg; }
+        .photo-frame:nth-child(2) { --rotate: 2deg; }
+        .photo-frame:nth-child(3) { --rotate: 4deg; }
+
+        .photo-frame .heart-icon {
+            font-size: 3rem;
+            color: #ff4466;
+            filter: drop-shadow(2px 4px 6px rgba(255,0,0,0.3));
+        }
+
+        .photo-label {
+            margin-top: 8px;
+            color: #a44;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .reasons {
+            background: #fff0f3;
+            padding: 25px;
+            border-radius: 30px;
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        .reasons h2 {
+            color: #ff4466;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+            text-align: center;
+        }
+
+        .reasons ul {
+            list-style: none;
+        }
+
+        .reasons li {
+            font-size: 1.2rem;
+            margin: 15px 0;
+            padding-left: 35px;
+            position: relative;
+            color: #633;
+        }
+
+        .reasons li:before {
+            content: "❤️";
+            position: absolute;
+            left: 0;
+            animation: heartColor 2s infinite;
+        }
+
+        @keyframes heartColor {
+            0% { color: #ff3366; }
+            50% { color: #ff66b2; }
+            100% { color: #ff3366; }
+        }
+
+        .love-counter {
+            background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+            padding: 30px;
+            border-radius: 50px;
+            margin: 30px 0;
+            color: white;
+        }
+
+        .love-counter h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .counter-number {
+            font-size: 4rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .valentine-question {
+            background: #ffb3ba;
+            padding: 40px;
+            border-radius: 50px;
+            margin: 40px 0;
+        }
+
+        .valentine-question h2 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .valentine-question .nada-name {
+            font-size: 3rem;
+            display: block;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(255,255,255,0.5);
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .btn-yes, .btn-no {
+            padding: 15px 40px;
+            font-size: 1.5rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-yes {
+            background: #ff3366;
+            color: white;
+            box-shadow: 0 5px 0 #b3204a;
+        }
+
+        .btn-yes:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 0 #b3204a;
+        }
+
+        .btn-yes:active {
+            transform: translateY(5px);
+            box-shadow: 0 3px 0 #b3204a;
+        }
+
+        .btn-no {
+            background: #666;
+            color: white;
+            box-shadow: 0 5px 0 #333;
+            position: relative;
+        }
+
+        .btn-no:hover {
+            background: #777;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 0 #333;
+        }
+
+        .success-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            z-index: 100;
+            display: none;
+            animation: popIn 0.5s;
+        }
+
+        @keyframes popIn {
+            0% { transform: translate(-50%, -50%) scale(0); }
+            80% { transform: translate(-50%, -50%) scale(1.1); }
+            100% { transform: translate(-50%, -50%) scale(1); }
+        }
+
+        .success-message h2 {
+            font-size: 2.5rem;
+            color: #ff3366;
+            margin: 20px 0;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #ff3366;
+            animation: confetti 3s infinite;
+        }
+
+        @keyframes confetti {
+            0% { transform: translateY(-100vh) rotate(0deg); }
+            100% { transform: translateY(100vh) rotate(720deg); }
+        }
+
+        .footer {
+            margin-top: 30px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            font-size: 1.1rem;
+        }
+
+        .footer span {
+            color: #ff3366;
+            font-weight: bold;
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2.5rem; }
+            .message { font-size: 1.3rem; }
+            .photo-gallery { grid-template-columns: 1fr; }
+            .valentine-question h2 { font-size: 2rem; }
+            .btn-yes, .btn-no { padding: 12px 30px; font-size: 1.2rem; }
+            .nada-acrostic { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-hearts" id="floatingHearts"></div>
+
+    <div class="container">
+        <div class="valentine-card">
+            <h1>Happy Valentine's Day <br><span class="name-highlight">Nada! ❤️</span></h1>
+            
+            <div class="heart-big">❤️</div>
+            
+            <div class="message">
+                "Every love story is beautiful, but ours is my favorite."
+                <br>
+                <span style="font-size: 1.2rem; color: #888;">- For Nada</span>
+            </div>
+
+            <div class="special-message">
+                <p>💝 To my beautiful Nada 💝</p>
+                <p>You light up my world like nobody else!</p>
+                <p>💕 You're the reason I believe in love 💕</p>
+            </div>
+
+            <!-- NADA Acrostic Poem -->
+            <div class="nada-acrostic">
+                <div class="acrostic-letter">N</div>
+                <div class="acrostic-letter">A</div>
+                <div class="acrostic-letter">D</div>
+                <div class="acrostic-letter">A</div>
+            </div>
+            
+            <div class="acrostic-meaning">
+                <p><strong>N</strong> - Never-ending love I feel for you</p>
+                <p><strong>A</strong> - Always on my mind, every single day</p>
+                <p><strong>D</strong> - Dream come true, having you in my life</p>
+                <p><strong>A</strong> - Angel sent from heaven above</p>
+            </div>
+
+            <div class="photo-gallery">
+                <div class="photo-frame">
+                    <div class="heart-icon">💖</div>
+                    <div class="photo-label">Nada's Smile</div>
+                </div>
+                <div class="photo-frame">
+                    <div class="heart-icon">💝</div>
+                    <div class="photo-label">Nada's Heart</div>
+                </div>
+                <div class="photo-frame">
+                    <div class="heart-icon">💗</div>
+                    <div class="photo-label">Nada's Beauty</div>
+                </div>
+            </div>
+
+            <!-- Love Counter -->
+            <div class="love-counter">
+                <h3>❤️ My Love for Nada ❤️</h3>
+                <div class="counter-number" id="loveCounter">∞</div>
+                <p style="font-size: 1.2rem;">Infinite and Eternal</p>
+            </div>
+
+            <div class="reasons">
+                <h2>💌 Why I Love You, Nada 💌</h2>
+                <ul>
+                    <li>Your beautiful smile that melts my heart</li>
+                    <li>The way you care about everything and everyone</li>
+                    <li>Your intelligence and wisdom</li>
+                    <li>The sound of your laughter</li>
+                    <li>How you make every moment special</li>
+                    <li>Your kind and gentle soul</li>
+                    <li>The way you look at me</li>
+                    <li>Your strength and determination</li>
+                </ul>
+            </div>
+
+            <div class="valentine-question">
+                <h2>
+                    My Dearest Nada,
+                    <span class="nada-name">❤️ Nada ❤️</span>
+                    Will you be my Valentine?
+                </h2>
+                <div class="buttons">
+                    <button class="btn-yes" onclick="showSuccess()">YES! I Will! 💕</button>
+                    <button class="btn-no" onmouseover="moveButton(this)">No 💔</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            Made with <span>infinite love</span> for my beautiful <span>Nada</span> ❤️
+        </div>
+    </div>
+
+    <!-- Success Message -->
+    <div class="success-message" id="successMessage">
+        <div style="font-size: 5rem;">💖</div>
+        <h2>Yay Nada! You said YES! 🎉</h2>
+        <p style="font-size: 1.3rem; color: #666; margin: 20px 0;">You've made me the happiest person in the world!</p>
+        <p style="font-size: 1.5rem; color: #ff3366;">I love you, Nada! ❤️</p>
+        <p style="font-size: 1.2rem; margin: 20px 0;">Can't wait to celebrate with you!</p>
+        <button onclick="closeSuccess()" style="margin-top: 20px; padding: 10px 30px; background: #ff3366; color: white; border: none; border-radius: 25px; cursor: pointer; font-size: 1.1rem;">Close</button>
+    </div>
+
+    <script>
+        // Create floating hearts
+        function createHearts() {
+            const heartsContainer = document.getElementById('floatingHearts');
+            for (let i = 0; i < 40; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerHTML = '❤️';
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDuration = (Math.random() * 5 + 3) + 's';
+                heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+                heart.style.animationDelay = Math.random() * 5 + 's';
+                heartsContainer.appendChild(heart);
+            }
+        }
+
+        // Move "No" button
+        function moveButton(button) {
+            const x = Math.random() * (window.innerWidth - button.offsetWidth - 100);
+            const y = Math.random() * (window.innerHeight - button.offsetHeight - 100);
+            button.style.position = 'fixed';
+            button.style.left = x + 'px';
+            button.style.top = y + 'px';
+            
+            // Add playful message
+            const messages = [
+                "Can't catch me! 😜",
+                "Nada deserves better! ❤️",
+                "Click YES instead! 💕",
+                "Nada is the best! 💖",
+                "You know you want to say YES! 💝"
+            ];
+            button.textContent = messages[Math.floor(Math.random() * messages.length)];
+        }
+
+        // Show success message with Nada's name
+        function showSuccess() {
+            document.getElementById('successMessage').style.display = 'block';
+            createConfetti();
+            
+            // Play a romantic message
+            const messages = [
+                "Nada said YES! 🎉",
+                "I love you Nada! ❤️",
+                "Best Valentine's ever! 💕"
+            ];
+            
+            // Create extra hearts
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.innerHTML = '❤️';
+                    heart.style.position = 'fixed';
+                    heart.style.left = Math.random() * 100 + '%';
+                    heart.style.top = Math.random() * 100 + '%';
+                    heart.style.fontSize = (Math.random() * 30 + 20) + 'px';
+                    heart.style.zIndex = '1000';
+                    heart.style.animation = 'float 3s ease-out';
+                    document.body.appendChild(heart);
+                    
+                    setTimeout(() => heart.remove(), 3000);
+                }, i * 100);
+            }
+        }
+
+        function closeSuccess() {
+            document.getElementById('successMessage').style.display = 'none';
+        }
+
+        // Create confetti
+        function createConfetti() {
+            for (let i = 0; i < 70; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.animationDelay = Math.random() * 2 + 's';
+                confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                confetti.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                confetti.style.width = (Math.random() * 10 + 5) + 'px';
+                confetti.style.height = (Math.random() * 10 + 5) + 'px';
+                document.body.appendChild(confetti);
+                
+                setTimeout(() => {
+                    confetti.remove();
+                }, 4000);
+            }
+        }
+
+        // Love counter animation
+        function updateLoveCounter() {
+            const counter = document.getElementById('loveCounter');
+            const loveMessages = ['∞', '❤️', '♾️', 'FOREVER'];
+            let index = 0;
+            
+            setInterval(() => {
+                index = (index + 1) % loveMessages.length;
+                counter.textContent = loveMessages[index];
+            }, 2000);
+        }
+
+        // Initialize everything
+        createHearts();
+        updateLoveCounter();
+
+        // Double click surprise for Nada
+        document.addEventListener('dblclick', function() {
+            alert('❤️ Nada, you are the most special person in my life! ❤️');
+        });
+
+        // Click on photo frames
+        document.querySelectorAll('.photo-frame').forEach((frame, index) => {
+            frame.addEventListener('click', function() {
+                const messages = [
+                    'Nada has the most beautiful smile! 💖',
+                    'Nada has the kindest heart! 💝',
+                    'Nada is absolutely beautiful! 💗'
+                ];
+                alert(messages[index]);
+            });
+        });
+
+        // Click on acrostic letters
+        document.querySelectorAll('.acrostic-letter').forEach((letter, index) => {
+            letter.addEventListener('click', function() {
+                const meanings = [
+                    'N is for how Nice you are! 💕',
+                    'A is for how Amazing you are! 💖',
+                    'D is for how Dreamy you are! 💗',
+                    'A is for how Angelic you are! 💝'
+                ];
+                alert(meanings[index]);
+            });
+        });
+
+        // Time-based greeting for Nada
+        const hour = new Date().getHours();
+        let greeting;
+        if (hour < 12) greeting = "Good Morning, Beautiful Nada!";
+        else if (hour < 18) greeting = "Good Afternoon, Sweet Nada!";
+        else greeting = "Good Evening, My Love Nada!";
+        
+        const messageDiv = document.querySelector('.message');
+        if (messageDiv) {
+            messageDiv.innerHTML = greeting + '<br><span style="font-size: 1rem;">Thinking of you always, Nada...</span>';
+        }
+    </script>
+</body>
+</html>
